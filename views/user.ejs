@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/public/css/style.css">
+    </head>
+
+    <body>
+        <div>
+            <form action="/user/<%= user.id %>?method=PUT" method="POST">
+                <input type="text" name="id" value="<%= user.id %>">
+                <input type="text" name="name" value="<%= user.name %>">
+                <input type="text" name="age" value="<%= user.age %>">
+                <input type="submit" value="update">
+            </form>
+        </div>
+    </body>
+</html>

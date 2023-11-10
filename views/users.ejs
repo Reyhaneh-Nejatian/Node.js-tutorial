@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+
+        <% if(errors.lenght){ %>
+            <div>
+                <ul>
+                    <% errors.forEach(err=>{ %>
+                        <li><%= err.msg %></li>
+                    <% }) %>
+                </ul>
+            </div>
+
+        <% } %>
+
+        <div>
+            <form action="/user" method="POST">
+                <input type="text" name="id">
+                <input type="text" name="name">
+                <input type="text" name="age">
+                <input type="submit">
+            </form>
+        </div>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>age</th>
+                    <th>opration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user=>{ %>
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.name %></td>
+                        <td><%= user.age %></td>
+                        <td>
+                            <form action="/user/<%= user.id %>?method=DELETE" method="POST">
+                                <input type="submit" value="remove">
+                            </form>
+
+                            <a href="/user/<%= user.id %>">update</a>
+                        </td>
+                    </tr>
+
+                <% }) %>
+            </tbody>
+        </table>
+    </body>
+</html>
