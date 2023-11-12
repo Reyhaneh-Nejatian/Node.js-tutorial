@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+
+    
+
+        <div>
+            <form action="/" method="POST">
+                <input type="text" name="id">
+                <input type="text" name="name">
+                <input type="text" name="age">
+                <input type="submit">
+            </form>
+        </div>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>age</th>
+                    <th>opration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user=>{ %>
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.name %></td>
+                        <td><%= user.age %></td>
+                        <td>
+                            <!-- <form method="POST" action="/user/<%= user.id %>?_method=DELETE"> -->
+                                <form action="/delete/1?_method=DELETE" method="post">
+                                    <button type="submit">حذف</button>
+                                </form>
+
+                            <!-- <form method="POST" action="/user/<%= user.id %>" class="form-delete">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit">حذف</button>
+                            </form> -->
+
+                            <a href="/<%= user.id %>">update</a>
+                        </td>
+                    </tr>
+
+                <% }) %>
+            </tbody>
+        </table>
+    </body>
+</html>
